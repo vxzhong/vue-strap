@@ -98,8 +98,14 @@ import coerceBoolean from './utils/coerceBoolean.js'
           for (var item of this.value) {
           	if (this.options.length ===0)
           	{
-          		// 
-          		foundItems = this.value;
+              let child;
+              this.$children.some(c => {
+                if (c.value === item) {
+                  child = c
+                  return true
+                }
+              })
+              child && foundItems.push(child.$els.v.innerText)
           	}
           	else
           	{
